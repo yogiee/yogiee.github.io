@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YoGi — Developer & Designer</title>
+  <meta name="description" content="YoGi — developer, designer, and reluctant dog-dad. Personal projects in Swift, C#, and Python." />
+  <meta property="og:title" content="YoGi — Developer & Designer" />
+  <meta property="og:description" content="Developer and designer with a hobby shelf of macOS apps." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yogiee.github.io" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d1117;
+      --bg-card:     #161b22;
+      --bg-hover:    #1c2128;
+      --border:      #30363d;
+      --border-subtle: #21262d;
+      --text-primary:  #e6edf3;
+      --text-secondary:#8b949e;
+      --text-muted:    #6e7681;
+      --accent:        #22d3ee;
+      --accent-dim:    #0e7490;
+      --accent-glow:   rgba(34, 211, 238, 0.15);
+      --swift:         #f05138;
+      --csharp:        #9b4f96;
+      --python:        #3572a5;
+      --js:            #f7df1e;
+      --html:          #e34c26;
+      --css-lang:      #264de4;
+      --php:           #777bb4;
+      --sql:           #336791;
+      --radius:        8px;
+      --radius-lg:     12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color .15s; }
+    a:hover { color: #67e8f9; }
+
+    ::selection { background: var(--accent-glow); color: var(--text-primary); }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      transition: color .15s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      padding: 0 0 80px;
+      border-top: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-image-wrap {
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-dog {
+      width: 100%;
+      height: 140%;
+      object-fit: cover;
+      display: block;
+      will-change: transform;
+    }
+
+    #hero .container {
+      padding-top: 52px;
+    }
+
+    .project-app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 13px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all .15s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary:hover {
+      background: #67e8f9;
+      color: #0d1117;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(34, 211, 238, 0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      border-color: var(--text-muted);
+    }
+
+    /* ============================================================
+       SECTION HEADINGS
+    ============================================================ */
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.65rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+      color: var(--text-primary);
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    .about-body {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-size: 1.0rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-text strong { color: var(--text-primary); font-weight: 500; }
+
+    .avatar-wrap {
+      flex-shrink: 0;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: block;
+      transition: border-color .2s;
+    }
+
+    .avatar:hover { border-color: var(--accent); }
+
+    /* ============================================================
+       PROJECTS
+    ============================================================ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color .15s, background .15s, transform .15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-dim);
+      background: var(--bg-hover);
+      transform: translateY(-2px);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .project-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .project-icon {
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: color .15s;
+    }
+
+    .project-card:hover .project-icon { color: var(--accent); }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .lang-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .lang-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .lang-dot.swift  { background: var(--swift); }
+    .lang-dot.csharp { background: var(--csharp); }
+    .lang-dot.python { background: var(--python); }
+
+    .project-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color .15s;
+    }
+
+    .project-link:hover { color: var(--accent); }
+
+    /* ============================================================
+       SKILLS
+    ============================================================ */
+    .skills-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .skill-group h3 {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      transition: all .15s;
+    }
+
+    .pill:hover {
+      border-color: var(--accent-dim);
+      color: var(--text-primary);
+      background: var(--bg-hover);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 36px 0;
+    }
+
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-left span { color: var(--accent); }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-link {
+      color: var(--text-muted);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .15s;
+    }
+
+    .footer-link:hover { color: var(--accent); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 620px) {
+      section { padding: 60px 0; }
+      #hero { padding: 72px 0 60px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .about-body { grid-template-columns: 1fr; }
+      .avatar-wrap { order: -1; }
+      .avatar { width: 72px; height: 72px; }
+      h1 { font-size: 2.2rem; }
+      footer .container { flex-direction: column; gap: 16px; text-align: center; }
+      .nav-links { display: none; }
+      .hero-image-wrap { height: 280px; }
+    }
+
+    /* ============================================================
+       SCROLLBAR
+    ============================================================ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav>
+    <div class="container">
+      <span class="nav-logo">~/yogiee</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-image-wrap">
+      <img class="hero-dog" src="bugzy.png" alt="Bugz the Beagle — senior desk supervisor" />
+    </div>
+    <div class="container">
+      <p class="hero-eyebrow">Developer & Designer</p>
+      <h1>
+        Hi, I'm <span class="gradient-text">YoGi</span>
+      </h1>
+      <p class="hero-tagline">
+        I've been building things on the web since dial-up was still a personality trait.
+        This is the hobby shelf — projects I made because I needed them, not because anyone asked.
+      </p>
+      <div class="hero-actions">
+        <a href="https://github.com/yogiee" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          View GitHub
+        </a>
+        <a href="#projects" class="btn btn-ghost">See Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About</p>
+      <h2>A bit about me</h2>
+      <div class="about-body">
+        <div class="about-text">
+          <p>
+            I've been somewhere in the digital universe since 1997. Started as a <strong>3D animator and visual artist</strong>,
+            then stumbled into web development in the early 2000s when the internet was still figuring itself out —
+            we had that in common. That eventually grew into a career spanning <strong>UI/UX design, web development</strong>,
+            and running my own boutique studio since 2009.
+          </p>
+          <p>
+            What you'll find here isn't my day job — it's my <strong>hobby shelf</strong>. My GitHub is where I solve
+            personal problems with code: a couple of Swift apps for macOS built out of genuine necessity, one of which
+            apparently needed a Windows port too. I also dabble in home automation and DIY electronics, because
+            apparently I don't believe in free time.
+          </p>
+          <p>
+            I'm a fixer by nature — find a problem, overthink it, then build something unnecessarily elegant to solve
+            it. Outside of screens, I share my life with a senior Beagle named Bugz, and we have more in common than
+            I'd like to admit: <strong>stubborn, persistent, and deeply unreasonable about food</strong>. I like to
+            think she learned all three from me. She would disagree, loudly, then go back to sleep.
+          </p>
+        </div>
+        <div class="avatar-wrap">
+          <img
+            class="avatar"
+            src="https://avatars.githubusercontent.com/u/2424464?v=4"
+            alt="YoGi"
+            width="100"
+            height="100"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS
+  ============================================================ -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Projects</p>
+      <h2>Things I've built</h2>
+      <div class="projects-grid">
+
+        <!-- Typa -->
+        <a href="https://github.com/yogiee/Typa" target="_blank" rel="noopener" class="project-card">
+          <img class="project-app-icon" src="https://raw.githubusercontent.com/yogiee/Typa/main/Typa/Resources/Assets.xcassets/AppIcon.appiconset/textpad-icon-dark-256.png" alt="Typa icon" />
+          <div class="project-header">
+            <span class="project-name">Typa</span>
+            <svg class="project-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="project-desc">
+            A small, focused text editor for macOS that renders Markdown beautifully.
+            Built for writers who want to stay in the flow.
+          </p>
+          <div class="project-footer">
+            <span class="lang-badge">
+              <span class="lang-dot swift"></span>
+              Swift
+            </span>
+            <span class="project-link">
+              github.com/yogiee/Typa
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- WallP -->
+        <a href="https://github.com/yogiee/WallP" target="_blank" rel="noopener" class="project-card">
+          <img class="project-app-icon" src="https://raw.githubusercontent.com/yogiee/WallP/main/mac/WallP/Assets.xcassets/AppIcon.appiconset/AppIcon-512.png" alt="WallP icon" />
+          <div class="project-header">
+            <span class="project-name">WallP</span>
+            <svg class="project-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="project-desc">
+            macOS menu bar app that rotates wallpapers from your Wallhaven collections.
+            Sits quietly in your menu bar and keeps your desktop fresh.
+          </p>
+          <div class="project-footer">
+            <span class="lang-badge">
+              <span class="lang-dot csharp"></span>
+              C#
+            </span>
+            <span class="project-link">
+              github.com/yogiee/WallP
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- IPMsgX -->
+        <a href="https://github.com/yogiee/IPMsgX" target="_blank" rel="noopener" class="project-card">
+          <img class="project-app-icon" src="https://raw.githubusercontent.com/yogiee/IPMsgX/main/IPMsgX/Resources/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" alt="IPMsgX icon" />
+          <div class="project-header">
+            <span class="project-name">IPMsgX</span>
+            <svg class="project-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="project-desc">
+            IP Messenger for macOS — a Swift/SwiftUI port of the classic LAN messaging app.
+            Fast, local, no accounts.
+          </p>
+          <div class="project-footer">
+            <span class="lang-badge">
+              <span class="lang-dot swift"></span>
+              Swift
+            </span>
+            <span class="project-link">
+              github.com/yogiee/IPMsgX
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- LAiMA -->
+        <a href="https://github.com/yogiee/LAiMA" target="_blank" rel="noopener" class="project-card">
+          <div class="project-header">
+            <span class="project-name">LAiMA</span>
+            <svg class="project-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="project-desc">
+            macOS terminal launcher for llama.cpp — discover Ollama models, pull from HuggingFace,
+            run llama-server with a live stats dashboard.
+          </p>
+          <div class="project-footer">
+            <span class="lang-badge">
+              <span class="lang-dot python"></span>
+              Python
+            </span>
+            <span class="project-link">
+              github.com/yogiee/LAiMA
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS
+  ============================================================ -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">Skills</p>
+      <h2>Tech I work with</h2>
+      <div class="skills-groups">
+
+        <div class="skill-group">
+          <h3>Web &amp; Design</h3>
+          <div class="skill-pills">
+            <span class="pill"><span class="pill-dot" style="background:var(--html)"></span>HTML</span>
+            <span class="pill"><span class="pill-dot" style="background:var(--css-lang)"></span>CSS</span>
+            <span class="pill"><span class="pill-dot" style="background:var(--js)"></span>JavaScript</span>
+            <span class="pill"><span class="pill-dot" style="background:var(--php)"></span>PHP</span>
+            <span class="pill"><span class="pill-dot" style="background:var(--sql)"></span>SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>App Development</h3>
+          <div class="skill-pills">
+            <span class="pill"><span class="pill-dot" style="background:var(--swift)"></span>Swift</span>
+            <span class="pill"><span class="pill-dot" style="background:var(--csharp)"></span>C#</span>
+            <span class="pill"><span class="pill-dot" style="background:var(--python)"></span>Python</span>
+            <span class="pill">SwiftUI</span>
+            <span class="pill">AppKit</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Tools &amp; Environment</h3>
+          <div class="skill-pills">
+            <span class="pill">Git</span>
+            <span class="pill">Xcode</span>
+            <span class="pill">Linux</span>
+            <span class="pill">Home Assistant</span>
+            <span class="pill">ESPHome</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <p class="footer-left">
+        <span>yogiee</span>.github.io
+      </p>
+      <div class="footer-right">
+        <a href="https://github.com/yogiee" target="_blank" rel="noopener" class="footer-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var img = document.querySelector('.hero-dog');
+      var wrap = document.querySelector('.hero-image-wrap');
+      if (!img || !wrap) return;
+      function tick() {
+        var extra = img.offsetHeight - wrap.offsetHeight; // overflow px
+        var offset = Math.min(0, -extra + window.scrollY * 0.4);
+        img.style.transform = 'translateY(' + offset + 'px)';
+      }
+      tick(); // set correct starting position immediately on load
+      window.addEventListener('scroll', tick, { passive: true });
+    })();
+  </script>
+</body>
+</html>
