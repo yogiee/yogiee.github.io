@@ -6,7 +6,7 @@
   <title>YoGi — Developer & Designer</title>
   <meta name="description" content="YoGi — developer, designer, and reluctant dog-dad. Personal projects in Swift, C#, and Python." />
   <meta property="og:title" content="YoGi — Developer & Designer" />
-  <meta property="og:description" content="Developer and designer with a hobby shelf of macOS apps." />
+  <meta property="og:description" content="Building for myself since dial-up had personality. Developer, designer, and reluctant dog-dad." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yogiee.github.io" />
   <meta property="og:image" content="https://yogiee.github.io/bugzy-og.png" />
@@ -232,6 +232,20 @@
       display: block;
     }
 
+    .project-icon-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 13px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-hover);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -251,7 +265,7 @@
     }
 
     .btn-primary:hover {
-      background: #67e8f9;
+      background: var(--accent-hover);
       color: #0d1117;
       transform: translateY(-1px);
       box-shadow: 0 4px 20px rgba(34, 211, 238, 0.3);
@@ -735,23 +749,31 @@
           </div>
         </a>
 
-        <!-- LAiMA -->
-        <a href="https://github.com/yogiee/LAiMA" target="_blank" rel="noopener" class="project-card">
+        <!-- MemoryCentral -->
+        <a href="https://github.com/yogiee/MemoryCentral" target="_blank" rel="noopener" class="project-card">
+          <div class="project-icon-badge">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+            </svg>
+          </div>
           <div class="project-header">
-            <span class="project-name">LAiMA</span>
+            <span class="project-name">MemoryCentral</span>
             <svg class="project-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </div>
           <p class="project-desc">
-            macOS terminal launcher for llama.cpp — discover Ollama models, pull from HuggingFace,
-            run llama-server with a live stats dashboard.
+            An MCP server that gives Claude Code a long-term memory. Syncs notes across every
+            project in a local SQLite store with full-text and semantic search — so you stop
+            re-explaining your codebase from scratch.
           </p>
           <div class="project-footer">
             <span class="lang-badge">
-              <span class="lang-dot python"></span>
-              Python
+              <span class="lang-dot" style="background:var(--js)"></span>
+              JavaScript
             </span>
             <span class="project-link">
-              github.com/yogiee/LAiMA
+              github.com/yogiee/MemoryCentral
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </span>
           </div>
@@ -797,6 +819,7 @@
           <div class="skill-pills">
             <span class="pill">Git</span>
             <span class="pill">Xcode</span>
+            <span class="pill">Figma</span>
             <span class="pill">Linux</span>
             <span class="pill">Home Assistant</span>
             <span class="pill">ESPHome</span>
